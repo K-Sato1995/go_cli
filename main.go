@@ -9,14 +9,17 @@ import (
 func main() {
 	app := cli.NewApp()
 
-	app.Name = "sampleApp"
-	app.Usage = "This app echo input arguments"
+	app.Name = "K-Sato's CLI"
+	app.Usage = "Return inputs"
 	app.Version = "0.0.1"
 
 	app.Action = func(context *cli.Context) error {
-		if context.Bool("cat") {
-			fmt.Println(context.Args().Get(0) + "だにゃん♡")
+		if context.Bool("y") {
+			// return YO + input
+			// go run -y main.go
+			fmt.Println("YO " + context.Args().Get(0))
 		} else {
+			// just return the input
 			fmt.Println(context.Args().Get(0))
 		}
 		return nil
@@ -24,8 +27,8 @@ func main() {
 
 	app.Flags = []cli.Flag{
 		cli.BoolFlag{
-			Name:  "cat, c",
-			Usage: "Echo with cat",
+			Name:  "yo, y",
+			Usage: "Echo with Yo",
 		},
 	}
 
